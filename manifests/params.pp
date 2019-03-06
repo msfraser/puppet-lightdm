@@ -26,6 +26,16 @@ class lightdm::params {
         }
       }
     }
+    'RedHat': {
+      $config_file      = '/etc/lightdm/lightdm.conf'
+      $config_users_file = '/etc/lightdm/users.conf'
+      $package_ensure   = 'installed'
+      $service_ensure   = 'running'
+      $package_name     = 'lightdm'
+      $service_name     = 'lightdm'
+      $package_provider = 'yum'
+      $service_provider = 'systemd'
+      
     default: {
       fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
     }
