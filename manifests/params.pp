@@ -35,7 +35,7 @@ class lightdm::params {
       $service_name     = 'lightdm'
       $package_provider = 'yum'
       $service_provider = 'systemd'
-      
+    }  
     default: {
       fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
     }
