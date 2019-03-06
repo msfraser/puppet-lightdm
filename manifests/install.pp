@@ -70,16 +70,7 @@ class lightdm::install (
           mode    => '0644',
           content => "DISPLAYMANAGER=lightdm\n"
         }
-        
-        # Stop current display-manager before we install lightdm
-        exec { 'stop other display-manager':
-          command => 'systemctl stop display-manager',
-          onlyif  => 'test "$(readlink /etc/systemd/system/display-manager.service)" != "/usr/lib/systemd/system/lightdm.service"',
-          path    => ['/usr/sbin', '/usr/bin', '/sbin', '/bin'],
-          user    => 'root',
-          before  => Package['lightdm'],
-        }
-        
+                
         package { 'lightdm':
           name     => $package_name,
           ensure   => $package_ensure,
