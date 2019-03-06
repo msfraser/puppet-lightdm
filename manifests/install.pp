@@ -75,7 +75,7 @@ class lightdm::install (
           name     => $package_name,
           ensure   => $package_ensure,
           provider => $package_provider,
-          before   => File['default-display-manager'],
+          require   => File['default-display-manager'],
         }
       }
     }
